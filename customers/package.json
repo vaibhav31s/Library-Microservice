@@ -1,0 +1,19 @@
+{
+    "name": "customers",
+    "version": "1.0.0",
+    "description": "",
+    "main": "customers.js",
+    "scripts": {
+        "start": "nodemon customers.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mongoose": "^5.9.7",
+        "nodemon": "^2.0.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.2"
+    }
+}

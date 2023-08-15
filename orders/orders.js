@@ -51,13 +51,13 @@ app.get("/order/:id", (req, res) => {
   Order.findById(req.params.id)
     .then((order) => {
       if (order) {
-        fetch("http://customer:5555/customer/" + order.CustomerID)
+        fetch("http://customers:5555/customer/" + order.CustomerID)
           .then((response) => {
             response
               .json()
               .then((data) => {
                 var orderObject = { customerName: data.name, bookTitle: "" };
-                fetch("http://book:4545/book/" + order.BookID).then(
+                fetch("http://books:4545/book/" + order.BookID).then(
                   (response) => {
                     response.json().then((data) => {
                       orderObject.bookTitle = data.title;
@@ -99,8 +99,5 @@ app.get("/", (req, res) => {
             res.json(data);
         })
         }
-    ).catch(err => {
-        res.send('Error');
-    }
     )
 });

@@ -51,13 +51,13 @@ app.get("/order/:id", (req, res) => {
   Order.findById(req.params.id)
     .then((order) => {
       if (order) {
-        fetch("http://localhost:5555/customer/" + order.CustomerID)
+        fetch("http://customer:5555/customer/" + order.CustomerID)
           .then((response) => {
             response
               .json()
               .then((data) => {
                 var orderObject = { customerName: data.name, bookTitle: "" };
-                fetch("http://localhost:4545/book/" + order.BookID).then(
+                fetch("http://book:4545/book/" + order.BookID).then(
                   (response) => {
                     response.json().then((data) => {
                       orderObject.bookTitle = data.title;

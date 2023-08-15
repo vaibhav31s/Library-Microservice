@@ -15,10 +15,47 @@ db.once("open", () => console.log("Connected to MongoDB"));
 // Load Model
 require("./Book");
 const Book = mongoose.model("Book");
-f;
 
 app.get("/", (req, res) => {
-  res.send("This is our main endpoint!");
+    res.send("This is our main endpoint!");
+});
+
+app.get("/books", (req, res) => {
+   Book.find().then((books) => {
+    res.json(books);
+    }).catch(err => {
+        if(err){
+            throw err;
+        }
+    }
+    );
+});
+
+app.get("/book/:id", (req, res) => {
+    Book.findById(req.params.id).then((book) => {
+        if(book){
+            res.json(book);
+        }else{
+            res.sendStatus(404);
+        }
+    }).catch(err => {
+        if(err){
+            throw err;
+        }
+    });
+});
+
+app.delete("/book/:id", (req, res) => {
+    Book.findByIdAndRemove(req.params.id).then(() => {
+        res.send("Book removed with success!");
+    }
+    ).catch(err => {
+        if(err){
+            throw err;
+        }
+    }
+    );
+    
 });
 
 app.post("/book", (req, res) => {

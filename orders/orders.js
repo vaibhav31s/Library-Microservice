@@ -92,12 +92,5 @@ app.listen(7777, () => {
 });
 
 app.get("/", (req, res) => {
-  
-    fetch('http://customers:5555/customers')
-    .then(response => {
-        response.json().then(data => {
-            res.json(data);
-        })
-        }
-    )
+    res.send("This is our main orders endpoint!");
 });

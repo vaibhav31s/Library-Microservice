@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.8'
 
 services:
   books:
@@ -9,8 +9,6 @@ services:
     container_name: books
     ports:
       - "4545:4545"
-    depends_on:
-      - mongo
     volumes:
       - :/app
       - /app/books/node_modules
@@ -23,8 +21,6 @@ services:
     container_name: customers
     ports:
       - "5555:5555"
-    depends_on:
-      - mongo
     volumes:
       - :/app
       - /app/customers/node_modules
@@ -37,8 +33,6 @@ services:
     container_name: orders
     ports:
       - "7777:7777"
-    depends_on:
-      - mongo
     volumes:
       - :/app
       - /app/orders/node_modules
@@ -53,4 +47,18 @@ services:
       - orders
     ports:
       - "80:80"
+
+
+# ---
+# version: '3.8'
+# services:
+#   app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "3000:3000"
+#     environment:
+#       NODE_ENV: production
+#       NEXT_TELEMETRY_DISABLED: 1
     

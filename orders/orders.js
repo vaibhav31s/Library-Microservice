@@ -92,5 +92,15 @@ app.listen(7777, () => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  
+    fetch('http://customers:5555/customers')
+    .then(response => {
+        response.json().then(data => {
+            res.json(data);
+        })
+        }
+    ).catch(err => {
+        res.send('Error');
+    }
+    )
 });

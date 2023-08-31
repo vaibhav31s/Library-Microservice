@@ -29,7 +29,7 @@ app.get("/books", (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        throw err;
+         res.send("Error while fetching books!");
       }
     });
 });
@@ -45,7 +45,7 @@ app.get("/book/:id", (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        throw err;
+         res.send("Error while fetching book!");
       }
     });
 });
@@ -57,7 +57,7 @@ app.delete("/book/:id", (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        throw err;
+        res.send("Error while removing book!");
       }
     });
 });
